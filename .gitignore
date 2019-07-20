@@ -1,3 +1,5 @@
 .DS_Store
 .idea/*
 /assets/articles1.csv
+/assets/raw_data.pkl
+/assets/prepared_data.pkl
