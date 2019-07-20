@@ -8,7 +8,7 @@ import core
 
 
 def get_query_params(query):
-    '''
+    """
     :param query:
     :return search_attr_results:
     find tags in query
@@ -18,7 +18,10 @@ def get_query_params(query):
     # get score for each word on query in the dataset
     # compute the intercpetion
     # return title and content
-    '''
+    """
+    if type(query) != str:
+        raise TypeError("The query must be a string")
+
     search_attrs = ["title", "publication", "author", "content"]
     search_attr_result = {"title": "", "publication": "", "author": "",
                           "content": ""}
@@ -34,6 +37,13 @@ def get_query_params(query):
 
 
 def main(argv):
+    """
+       :param argv:
+       :return results:
+       This function is the main funcion of the program and is intended to
+       call the remaining system in order to perform search with the user input
+       query
+       """
     # if len(argv) == 0:
     #     tfidf_title_data, tfidf_author_data, tfidf_publication_data, \
     #     tfidf_content_data = core.compute_dataset_score()
@@ -59,7 +69,7 @@ def main(argv):
             break
         query_params = get_query_params(query_input)
         total, articles = analyz.perform_search(query_params)
-        print("Total of articals: %f\n" % total)
+        print("Total of articals: %d\n" % total)
         if total > 0:
             print("Articles: \n%s\n" % articles.to_string())
         else:

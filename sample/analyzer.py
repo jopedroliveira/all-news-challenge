@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
-from core import *
+
 from sklearn.feature_extraction.text import CountVectorizer
+from core import *
 import pandas as pd
 import os
 import numpy as np
@@ -17,8 +18,8 @@ class Analyzer:
 
     def get_score(self, key, value):
         inters = ""
-        text = text_clean(value)
-        text = text_stem(text)
+        text = core.text_clean(value)
+        text = core.text_stem(text)
         cv = CountVectorizer(stop_words='english')
         cv.fit_transform([text])
         words = cv.get_feature_names()
@@ -92,5 +93,5 @@ class Analyzer:
             self.content_set = self.load_set(content_set)
         else:
             self.data_set, self.title_set, self.pub_set, \
-            self.author_set, self.content_set = compute_dataset_score()
+            self.author_set, self.content_set = core.compute_dataset_score()
             # TODO
