@@ -1,1 +1,1 @@
-# talkdesk_challenge
+# kaggle - all news challenge
